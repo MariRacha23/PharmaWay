@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaWay — ფარმაცევტული დისტრიბუცია</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button class="burger-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="logo" data-i18n="navTitle">PharmaWay</div>
+        </div>
+        <nav id="navMenu">
+            <a href="#about" data-i18n="navAbout" onclick="closeMobileMenu()">კომპანია</a>
+            <a href="#products" data-i18n="navProducts" onclick="closeMobileMenu()">მედიკამენტები</a>
+            <a href="#contact" data-i18n="navContact" onclick="closeMobileMenu()">კონტაქტი</a>
+        </nav>
+
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="lang-flags desktop-lang">
+                <button class="flag-btn active" onclick="changeLanguage('ka')">
+                    <img src="https://flagcdn.com/w20/ge.png" alt="GE" class="flag-img"> KA
+                </button>
+                <button class="flag-btn" onclick="changeLanguage('en')">
+                    <img src="https://flagcdn.com/w20/gb.png" alt="EN" class="flag-img"> EN
+                </button>
+                <button class="flag-btn" onclick="changeLanguage('ru')">
+                    <img src="https://flagcdn.com/w20/ru.png" alt="RU" class="flag-img"> RU
+                </button>
+            </div>
+
+            <div class="mobile-lang-select">
+                <select id="mobileLangSelect" onchange="changeLanguage(this.value)">
+                    <option value="ka">🇬🇪 KA</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="ru">🇷🇺 RU</option>
+                </select>
+            </div>
+
+            <button id="themeToggleBtn" onclick="toggleTheme()" title="თემის შეცვლა" style="
+                background: var(--card-bg);
+                border: 1px solid var(--card-border);
+                color: var(--text-main);
+                width: 36px;
+                height: 36px;
+                border-radius: 8px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 15px;
+                transition: border-color 0.3s;
+            ">🌙</button>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section class="hero" id="about">
+            <h1 data-i18n="heroTitle">PharmaWay — გზა საჭირო მედიკამენტამდე</h1>
+            <p data-i18n="heroSubtitle" style="max-width: 800px; margin: 0 auto 30px auto;">ჩვენი მიზანია, გავამარტივოთ
+                მედიკამენტების მოძიება და მომხმარებლებს მივაწოდოთ ინფორმაცია მათი ხელმისაწვდომობის შესახებ.</p>
+
+            <div
+                style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 35px; text-align: left; margin-top: 30px; line-height: 1.7;">
+                <h2 style="color: var(--accent-color); font-size: 24px; margin-bottom: 20px;" data-i18n="aboutHeading">
+                    ჩვენ შესახებ</h2>
+                <p data-i18n="aboutText1" style="color: var(--text-muted); margin-bottom: 15px;">PharmaWay მუდმივად
+                    მუშაობს ფარმაცევტული პორტფელის განვითარებასა და გაფართოებაზე, რათა ბაზარს შესთავაზოს სხვადასხვა
+                    მიმართულების მედიკამენტები. თანამშრომლობს წამყვან ევროპულ მწარმოებლებთან და განსაკუთრებულ ყურადღებას
+                    უთმობს პროდუქციის ხარისხსა და უსაფრთხოებას.</p>
+                <p data-i18n="aboutText2" style="color: var(--text-muted); margin-bottom: 20px;">PharmaWay-ის საქმიანობა
+                    ეფუძნება პროფესიონალიზმს, პასუხისმგებლობასა და ფარმაცევტული დისტრიბუციის სათანადო სტანდარტების
+                    დაცვას. ჩვენი საწყობი ფლობს GDP სერტიფიკატს, რაც ფარმაცევტული პროდუქციის სათანადო დისტრიბუციის
+                    პროცესის მნიშვნელოვანი გარანტიაა.</p>
+                <p data-i18n="aboutTagline" style="color: var(--text-main); font-weight: bold; font-size: 17px;">
+                    PharmaWay — სანდოობა, ხარისხი და ზრუნვა თქვენს საჭიროებებზე.</p>
+            </div>
+        </section>
+
+        <section id="products" style="margin-bottom: 60px;">
+            <div style="display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
+                <input type="text" id="searchInput" placeholder="მოძებნე წამალი დასახელებით ან ნივთიერებით..."
+                    data-i18n-placeholder="searchPlaceholder"
+                    style="flex: 1; min-width: 250px; background: var(--input-bg); border: 1px solid var(--card-border); padding: 12px 16px; border-radius: 8px; color: var(--text-main);">
+                <select id="categoryFilter"
+                    style="background: var(--input-bg); border: 1px solid var(--card-border); padding: 12px 16px; border-radius: 8px; color: var(--text-main); cursor: pointer;">
+                    <option value="" data-i18n="allCategories">ყველა კატეგორია</option>
+                </select>
+            </div>
+
+            <div id="medicinesGrid"
+                style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="contact-col">
+                <h3 data-i18n="directConnectTitle">პირდაპირი კონტაქტი</h3>
+                <p data-i18n="directConnectSub">მოგვწერეთ ან დაგვიკავშირდით თქვენთვის სასურველი პლატფორმით:</p>
+
+                <div class="contact-card-item">
+                    <div>
+                        <span data-i18n="phoneLabel">ტელეფონი</span><br>
+                        <strong>+995 (32) 2 00 00 00</strong>
+                    </div>
+                    <span>📞</span>
+                </div>
+
+                <div class="contact-card-item">
+                    <div>
+                        <span data-i18n="whatsappLabel">WhatsApp</span><br>
+                        <strong>Chat on WhatsApp</strong>
+                    </div>
+                    <span>💬</span>
+                </div>
+
+                <div class="contact-card-item">
+                    <div>
+                        <span data-i18n="emailLabel">ელ-ფოსტა</span><br>
+                        <strong>info@pharmaway.ge</strong>
+                    </div>
+                    <span>✉️</span>
+                </div>
+
+                <div class="contact-card-item">
+                    <div>
+                        <span data-i18n="addressLabel">მისამართი</span><br>
+                        <strong data-i18n="addressVal">თბილისი, საქართველო</strong>
+                    </div>
+                    <span>📍</span>
+                </div>
+            </div>
+
+            <div class="contact-col">
+                <h3 data-i18n="formTitle">მოგვწერეთ შეტყობინება</h3>
+                <p data-i18n="formSub">შეავსეთ ფორმა და ჩვენი გუნდი მალე გიპასუხებთ:</p>
+
+                <form onsubmit="event.preventDefault(); alert('შეტყობინება გაგზავნილია!');">
+                    <div class="form-group">
+                        <input type="text" placeholder="თქვენი სახელი" data-i18n-placeholder="namePlaceholder" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="ელ-ფოსტის მისამართი" data-i18n-placeholder="mailPlaceholder"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="მოგვწერეთ თქვენი შეკითხვა..." data-i18n-placeholder="msgPlaceholder"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" data-i18n="sendBtn">შეტყობინების გაგზავნა</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p style="margin-top: 10px;">&copy; 2026 PharmaWay. <span data-i18n="footerRights">ყველა უფლება დაცულია.</span>
+        </p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
+
+
+
+</body>
+
+</html>

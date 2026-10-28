@@ -1,0 +1,325 @@
+:root {
+    --bg-color: #0c0c0e;
+    --card-bg: #141418;
+    --card-border: #22222a;
+    --accent-color: #e5c17d;
+    --text-main: #ffffff;
+    --text-muted: #9ca3af;
+    --input-bg: #101014;
+}
+
+body.light-theme {
+    --bg-color: #f4f8f7;
+    --card-bg: #ffffff;
+    --card-border: #d1dedb;
+    --accent-color: #2b7a78;
+    --text-main: #2d3748;
+    --text-muted: #5a6578;
+    --input-bg: #ebf3f1;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--card-border);
+    background: var(--bg-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--accent-color);
+}
+
+.burger-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    padding: 0;
+}
+
+.burger-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-main);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.mobile-lang-select {
+    display: none;
+}
+
+.mobile-lang-select select {
+    background: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--card-border);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+}
+
+nav a {
+    margin: 0 15px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--text-main);
+}
+
+.lang-flags {
+    display: flex;
+    gap: 8px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 5px 8px;
+    border-radius: 8px;
+    align-items: center;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.flag-btn {
+    background: transparent;
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 6px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s;
+}
+
+.flag-img {
+    width: 18px;
+    height: 12px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.flag-btn:hover {
+    color: var(--text-main);
+}
+
+.flag-btn.active {
+    color: var(--accent-color);
+    background: var(--input-bg);
+    border: 1px solid var(--card-border);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    flex: 1;
+    width: 100%;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.hero p {
+    color: var(--text-muted);
+    font-size: 18px;
+}
+
+.contact-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 40px;
+    margin-top: 40px;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+
+
+.contact-col h3 {
+    font-size: 20px;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.contact-col>p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.contact-card-item {
+    background: var(--input-bg);
+    border: 1px solid var(--card-border);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.contact-card-item:hover {
+    border-color: var(--accent-color);
+}
+
+.contact-card-item span {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.contact-card-item strong {
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid var(--card-border);
+    padding: 14px 16px;
+    border-radius: 8px;
+    color: var(--text-main);
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+.submit-btn {
+    width: 100%;
+    background: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid var(--card-border);
+    color: var(--text-muted);
+    font-size: 13px;
+    background: var(--bg-color);
+    margin-top: 60px;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+
+@media (max-width: 850px) {
+    .burger-btn {
+        display: flex;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--card-bg);
+        border-bottom: 1px solid var(--card-border);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 15px;
+        display: none;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        margin: 5px 0;
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 768px) {
+    .contact-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+    .desktop-lang {
+        display: none !important;
+    }
+
+    .mobile-lang-select {
+        display: block !important;
+    }
+
+    header {
+        padding: 15px 20px;
+    }
+}
