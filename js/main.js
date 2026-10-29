@@ -57,17 +57,17 @@ function updateTexts() {
 }
 
 function renderMedicines(items) {
-    const grid = document.getElementById('medicinesGrid');
-    grid.innerHTML = '';
+  const grid = document.getElementById("medicinesGrid");
+  grid.innerHTML = "";
 
-    if (items.length === 0) {
-        grid.innerHTML = `<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center;">მედიკამენტი ვერ მოიძებნა</p>`;
-        return;
-    }
+  if (items.length === 0) {
+    grid.innerHTML = `<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center;">მედიკამენტი ვერ მოიძებნა</p>`;
+    return;
+  }
 
-    items.forEach(med => {
-        const card = document.createElement('div');
-        card.style.cssText = `
+  items.forEach((med) => {
+    const card = document.createElement("div");
+    card.style.cssText = `
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 10px;
@@ -77,12 +77,13 @@ function renderMedicines(items) {
             justify-content: space-between;
             transition: border-color 0.3s, background 0.3s;
         `;
-        
-        const activeLabel = translations[currentLang].activeIngredientLabel || 'აქტიური ნივთიერება';
-        const instText = translations[currentLang].instructionBtn || 'ინსტრუქცია';
-        const downloadText = translations[currentLang].downloadBtn || 'ჩამოტვირთვა';
 
-        card.innerHTML = `
+    const activeLabel =
+      translations[currentLang].activeIngredientLabel || "აქტიური ნივთიერება";
+    const instText = translations[currentLang].instructionBtn || "ინსტრუქცია";
+    const downloadText = translations[currentLang].downloadBtn || "ჩამოტვირთვა";
+
+    card.innerHTML = `
             <div>
                 <div style="width: 100%; height: 160px; background: #ffffff; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; overflow: hidden; padding: 10px;">
                     <img src="${med.image}" alt="${med.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
@@ -111,7 +112,7 @@ function renderMedicines(items) {
                         transition: background 0.3s, color 0.3s;
                     ">${instText}</button>
 
-                    <a href="${med.annotationFile || '#'}" download style="
+                    <a href="${med.annotationFile || "#"}" download style="
                         background: var(--accent-color);
                         border: 1px solid var(--accent-color);
                         color: #0c0c0e;
@@ -129,32 +130,32 @@ function renderMedicines(items) {
                 </div>
             </div>
         `;
-        grid.appendChild(card);
-    });
+    grid.appendChild(card);
+  });
 }
 
 function openAnnotationModal(medName, pdfPath) {
-    if (window.innerWidth <= 768) {
-        window.open(pdfPath, '_blank');
-        return;
-    }
+  if (window.innerWidth <= 768) {
+    window.open(pdfPath, "_blank");
+    return;
+  }
 
-    const modal = document.getElementById('annotationModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
+  const modal = document.getElementById("annotationModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalBody = document.getElementById("modalBody");
 
-    modalTitle.textContent = `${medName} — სრული ანოტაცია`;
-    modalBody.innerHTML = `
+  modalTitle.textContent = `${medName} — სრული ანოტაცია`;
+  modalBody.innerHTML = `
         <iframe src="${pdfPath}" style="width: 100%; height: 100%; border: none;"></iframe>
     `;
-    
-    modal.style.display = 'flex';
+
+  modal.style.display = "flex";
 }
 
 function closeAnnotationModal() {
-    const modal = document.getElementById('annotationModal');
-    modal.style.display = 'none';
-    document.getElementById('modalBody').innerHTML = '';
+  const modal = document.getElementById("annotationModal");
+  modal.style.display = "none";
+  document.getElementById("modalBody").innerHTML = "";
 }
 
 function setupSearchAndFilter() {
