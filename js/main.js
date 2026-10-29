@@ -57,17 +57,17 @@ function updateTexts() {
 }
 
 function renderMedicines(items) {
-  const grid = document.getElementById("medicinesGrid");
-  grid.innerHTML = "";
+    const grid = document.getElementById('medicinesGrid');
+    grid.innerHTML = '';
 
-  if (items.length === 0) {
-    grid.innerHTML = `<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center;">მედიკამენტი ვერ მოიძებნა</p>`;
-    return;
-  }
+    if (items.length === 0) {
+        grid.innerHTML = `<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center;">მედიკამენტი ვერ მოიძებნა</p>`;
+        return;
+    }
 
-  items.forEach((med) => {
-    const card = document.createElement("div");
-    card.style.cssText = `
+    items.forEach(med => {
+        const card = document.createElement('div');
+        card.style.cssText = `
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 10px;
@@ -77,11 +77,12 @@ function renderMedicines(items) {
             justify-content: space-between;
             transition: border-color 0.3s, background 0.3s;
         `;
+        
+        const activeLabel = translations[currentLang].activeIngredientLabel || 'აქტიური ნივთიერება';
+        const instText = translations[currentLang].instructionBtn || 'ინსტრუქცია';
+        const downloadText = translations[currentLang].downloadBtn || 'ჩამოტვირთვა';
 
-    const activeLabel =
-      translations[currentLang].activeIngredientLabel || "აქტიური ნივთიერება";
-
-    card.innerHTML = `
+        card.innerHTML = `
             <div>
                 <div style="width: 100%; height: 160px; background: #ffffff; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; overflow: hidden; padding: 10px;">
                     <img src="${med.image}" alt="${med.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
@@ -93,21 +94,67 @@ function renderMedicines(items) {
             </div>
             <div style="border-top: 1px solid var(--card-border); margin-top: 15px; padding-top: 15px;">
                 <span style="font-size: 13px; display: block; margin-bottom: 10px; color: var(--text-main);">${med.form[currentLang]}</span>
-                <button onclick="alert('${med.indications[currentLang]}')" style="
-                    width: 100%;
-                    background: transparent;
-                    border: 1px solid var(--accent-color);
-                    color: var(--accent-color);
-                    padding: 10px;
-                    border-radius: 6px;
-                    cursor: pointer;
-                    font-weight: 600;
-                    transition: background 0.3s, color 0.3s;
-                ">${translations[currentLang].detailsBtn || "ინსტრუქცია და შეძენა"}</button>
+                
+                <!-- ინსტრუქციის ღილაკი ხსნის ზუსტად PDF ფაილს პოპაპში -->
+                <div style="display: flex; gap: 8px;">
+                    <button onclick='openAnnotationModal("${med.name}", "${med.annotationFile}")' style="
+                        flex: 1;
+                        text-align: center;
+                        background: transparent;
+                        border: 1px solid var(--accent-color);
+                        color: var(--accent-color);
+                        padding: 10px 8px;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        font-weight: 600;
+                        font-size: 13px;
+                        transition: background 0.3s, color 0.3s;
+                    ">${instText}</button>
+
+                    <a href="${med.annotationFile || '#'}" download style="
+                        background: var(--accent-color);
+                        border: 1px solid var(--accent-color);
+                        color: #0c0c0e;
+                        padding: 10px 12px;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        font-weight: 700;
+                        font-size: 13px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-decoration: none;
+                        transition: opacity 0.3s;
+                    " title="${downloadText}">📥</a>
+                </div>
             </div>
         `;
-    grid.appendChild(card);
-  });
+        grid.appendChild(card);
+    });
+}
+
+function openAnnotationModal(medName, pdfPath) {
+    if (window.innerWidth <= 768) {
+        window.open(pdfPath, '_blank');
+        return;
+    }
+
+    const modal = document.getElementById('annotationModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+
+    modalTitle.textContent = `${medName} — სრული ანოტაცია`;
+    modalBody.innerHTML = `
+        <iframe src="${pdfPath}" style="width: 100%; height: 100%; border: none;"></iframe>
+    `;
+    
+    modal.style.display = 'flex';
+}
+
+function closeAnnotationModal() {
+    const modal = document.getElementById('annotationModal');
+    modal.style.display = 'none';
+    document.getElementById('modalBody').innerHTML = '';
 }
 
 function setupSearchAndFilter() {

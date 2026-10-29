@@ -7,6 +7,8 @@
     <title>PharmaWay — ფარმაცევტული დისტრიბუცია</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
 </head>
 
 <body>
@@ -19,8 +21,11 @@
                 <span></span>
                 <span></span>
             </button>
-            <div class="logo" data-i18n="navTitle">PharmaWay</div>
-        </div>
+<div class="logo">
+    <a href="#" style="display: flex; align-items: center; text-decoration: none;">
+        <img src="assets/images/logo.png" alt="PharmaWay" style="height: 50px; object-fit: contain;">
+    </a>
+</div>        </div>
         <nav id="navMenu">
             <a href="#about" data-i18n="navAbout" onclick="closeMobileMenu()">კომპანია</a>
             <a href="#products" data-i18n="navProducts" onclick="closeMobileMenu()">მედიკამენტები</a>
@@ -170,6 +175,17 @@
         <p style="margin-top: 10px;">&copy; 2026 PharmaWay. <span data-i18n="footerRights">ყველა უფლება დაცულია.</span>
         </p>
     </footer>
+
+<div id="annotationModal">
+    <div class="modal-content-box">
+        <div class="modal-header">
+            <h3 id="modalTitle">ინსტრუქცია</h3>
+            <button class="modal-close-btn" onclick="closeAnnotationModal()">&times;</button>
+        </div>
+        <div id="modalBody">
+        </div>
+    </div>
+</div>
 
     <script src="js/data.js"></script>
     <script src="js/translations.js"></script>
