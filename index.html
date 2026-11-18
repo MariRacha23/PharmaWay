@@ -9,6 +9,15 @@
     <link rel="stylesheet" href="css/style.css">
 
     <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("8frgFJXUONVg83ru3");
+   })();
+</script>
+
+
 </head>
 
 <body>
@@ -125,52 +134,43 @@
                     <span>📞</span>
                 </a>
 
-                <a href="https://wa.me/995500000000" target="_blank" class="contact-card-item"
-                    style="text-decoration: none; color: inherit; display: flex; align-items: center; justify-content: space-between;">
-                    <div>
-                        <span data-i18n="whatsappLabel">WhatsApp</span><br>
-                        <strong>Chat on WhatsApp</strong>
-                    </div>
-                    <span>💬</span>
-                </a>
+                <a href="https://www.facebook.com/share/1QcZDbJKkA/?mibextid=wwXIfr" target="_blank" class="contact-card-item" style="text-decoration: none; color: inherit; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+                <span>Facebook</span><br>
+                <strong>Visit our Facebook Page</strong>
+            </div>
+            <span>🌐</span>
+        </a>
 
-                <a href="mailto:info@pharmaway.ge" class="contact-card-item"
+                <a href="mailto:info@llcsaba.ge" class="contact-card-item"
                     style="text-decoration: none; color: inherit; display: flex; align-items: center; justify-content: space-between;">
                     <div>
                         <span data-i18n="emailLabel">ელ-ფოსტა</span><br>
-                        <strong>info@pharmaway.ge</strong>
+                        <strong>info@llcsaba.ge</strong>
                     </div>
                     <span>✉️</span>
                 </a>
 
-                <!-- <div class="contact-card-item">
-                    <div>
-                        <span data-i18n="addressLabel">მისამართი</span><br>
-                        <strong data-i18n="addressVal">თბილისი, საქართველო</strong>
-                    </div>
-                    <span>📍</span>
-                </div> -->
+            
             </div>
 
-            <div class="contact-col">
-                <h3 data-i18n="formTitle">მოგვწერეთ შეტყობინება</h3>
-                <p data-i18n="formSub">შეავსეთ ფორმა და ჩვენი გუნდი მალე გიპასუხებთ:</p>
-
-                <form onsubmit="event.preventDefault(); alert('შეტყობინება გაგზავნილია!');">
-                    <div class="form-group">
-                        <input type="text" data-i18n-placeholder="namePlaceholder" placeholder="თქვენი სახელი" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" data-i18n-placeholder="mailPlaceholder" placeholder="ელ-ფოსტის მისამართი"
-                            required>
-                    </div>
-                    <div class="form-group">
-                        <textarea data-i18n-placeholder="msgPlaceholder" placeholder="მოგვწერეთ თქვენი შეკითხვა..."
-                            required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn" data-i18n="sendBtn">შეტყობინების გაგზავნა</button>
-                </form>
-            </div>
+           <div class="contact-col">
+    <h3 data-i18n="formTitle">მოგვწერეთ შეტყობინება</h3>
+    <p data-i18n="formSub">შეავსეთ ფორმა და ჩვენი გუნდი მალე გიპასუხებთ:</p>
+    
+    <form id="contactForm" onsubmit="sendEmail(event)">
+        <div class="form-group">
+            <input type="text" id="userName" data-i18n-placeholder="namePlaceholder" placeholder="თქვენი სახელი" required>
+        </div>
+        <div class="form-group">
+            <input type="email" id="userEmail" data-i18n-placeholder="mailPlaceholder" placeholder="ელ-ფოსტის მისამართი" required>
+        </div>
+        <div class="form-group">
+            <textarea id="userMessage" data-i18n-placeholder="msgPlaceholder" placeholder="მოგვწერეთ თქვენი შეკითხვა..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn" data-i18n="sendBtn">შეტყობინების გაგზავნა</button>
+    </form>
+</div>
         </section>
 
     </div>
@@ -190,6 +190,14 @@
             </div>
         </div>
     </div>
+
+    <div id="imageModal">
+    <div class="image-modal-content">
+        <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
+        <img id="modalImage" src="" alt="Zoomed Medicine">
+        <h3 id="modalImageTitle"></h3>
+    </div>
+</div>
 
     <script src="js/data.js"></script>
     <script src="js/translations.js"></script>
