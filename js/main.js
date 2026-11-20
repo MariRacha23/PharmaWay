@@ -220,15 +220,23 @@ function setupSearchAndFilter() {
   updateCategoryFilterOptions();
 
   const filterHandler = () => {
-    const query = searchInput.value.toLowerCase();
+    const query = searchInput.value.toLowerCase().trim();
     const selectedCat = categoryFilter.value;
 
     const filtered = medicinesList.filter((med) => {
-      const matchesQuery =
+      const matchesMain =
         med.name.toLowerCase().includes(query) ||
         med.activeIngredient.toLowerCase().includes(query);
+
+      const matchesSearchList =
+        med.searchNames &&
+        med.searchNames.some((alias) => alias.toLowerCase().includes(query));
+
+      const matchesQuery = matchesMain || matchesSearchList;
+
       const matchesCat =
         selectedCat === "" || med.category[currentLang] === selectedCat;
+
       return matchesQuery && matchesCat;
     });
 

@@ -1,24 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PharmaWay — ფარმაცევტული დისტრიბუცია</title>
+    <title>PharmaWay — ფარმაცევტული დისტრიბუცია და მედიკამენტების კატალოგი</title>
+
+    <meta name="description"
+        content="PharmaWay - ფარმაცევტული პროდუქტების დისტრიბუცია: ნევროლოგია, გასტროენტეროლოგია, პულმონოლოგია, გადაუდებელი დახმარება. მედიკამენტების სრული კატალოგი და ანოტაციები.">
+    <meta name="keywords"
+        content="PharmaWay, ფარმაცია, მედიკამენტები, დისტრიბუცია, წამლები, Halopril, გალოპრილი, Haloperidol, Metpamid, მეტპამიდი, Metoclopramide, Naloxone, ნალოქსონი, Quet, კუეტი, Quetiapine, Salres, სალრესი, Salbutamol, Stilizan, სტილიზანი, Trifluoperazine">
+    <meta name="author" content="PharmaWay Team">
+
+    <meta property="og:title" content="PharmaWay — ფარმაცევტული დისტრიბუცია">
+    <meta property="og:description"
+        content="აღმოაჩინეთ მედიკამენტების სრული კატალოგი, აქტიური ნივთიერებები და ოფიციალური ანოტაციები.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://pharmaway-sigma.vercel.app/assets/images/logo.png">
+    <meta property="og:url" content="https://pharmaway-sigma.vercel.app/">
+
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-
     <link rel="icon" type="image/png" href="assets/images/logo.png">
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "PharmaWay",
+      "description": "ფარმაცევტული პროდუქტებისა და მედიკამენტების დისტრიბუციისა და კატალოგის პლატფორმა.",
+      "url": "https://pharmaway-sigma.vercel.app/",
+      "email": "info@llcsaba.ge",
+      "areaServed": "Georgia",
+      "medicalSpecialty": ["Neurology", "Gastroenterology", "Pulmonology", "Emergency"]
+    }
+    </script>
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init("8frgFJXUONVg83ru3");
-   })();
-</script>
-
-
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("8frgFJXUONVg83ru3");
+        })();
+    </script>
 </head>
+
 
 <body>
 
@@ -134,13 +159,15 @@
                     <span>📞</span>
                 </a>
 
-                <a href="https://www.facebook.com/share/1QcZDbJKkA/?mibextid=wwXIfr" target="_blank" class="contact-card-item" style="text-decoration: none; color: inherit; display: flex; align-items: center; justify-content: space-between;">
-            <div>
-                <span>Facebook</span><br>
-                <strong>Visit our Facebook Page</strong>
-            </div>
-            <span>🌐</span>
-        </a>
+                <a href="https://www.facebook.com/share/1QcZDbJKkA/?mibextid=wwXIfr" target="_blank"
+                    class="contact-card-item"
+                    style="text-decoration: none; color: inherit; display: flex; align-items: center; justify-content: space-between;">
+                    <div>
+                        <span>Facebook</span><br>
+                        <strong>Visit our Facebook Page</strong>
+                    </div>
+                    <span>🌐</span>
+                </a>
 
                 <a href="mailto:info@llcsaba.ge" class="contact-card-item"
                     style="text-decoration: none; color: inherit; display: flex; align-items: center; justify-content: space-between;">
@@ -151,26 +178,30 @@
                     <span>✉️</span>
                 </a>
 
-            
+
             </div>
 
-           <div class="contact-col">
-    <h3 data-i18n="formTitle">მოგვწერეთ შეტყობინება</h3>
-    <p data-i18n="formSub">შეავსეთ ფორმა და ჩვენი გუნდი მალე გიპასუხებთ:</p>
-    
-    <form id="contactForm" onsubmit="sendEmail(event)">
-        <div class="form-group">
-            <input type="text" id="userName" data-i18n-placeholder="namePlaceholder" placeholder="თქვენი სახელი" required>
-        </div>
-        <div class="form-group">
-            <input type="email" id="userEmail" data-i18n-placeholder="mailPlaceholder" placeholder="ელ-ფოსტის მისამართი" required>
-        </div>
-        <div class="form-group">
-            <textarea id="userMessage" data-i18n-placeholder="msgPlaceholder" placeholder="მოგვწერეთ თქვენი შეკითხვა..." required></textarea>
-        </div>
-        <button type="submit" class="submit-btn" id="submitBtn" data-i18n="sendBtn">შეტყობინების გაგზავნა</button>
-    </form>
-</div>
+            <div class="contact-col">
+                <h3 data-i18n="formTitle">მოგვწერეთ შეტყობინება</h3>
+                <p data-i18n="formSub">შეავსეთ ფორმა და ჩვენი გუნდი მალე გიპასუხებთ:</p>
+
+                <form id="contactForm" onsubmit="sendEmail(event)">
+                    <div class="form-group">
+                        <input type="text" id="userName" data-i18n-placeholder="namePlaceholder"
+                            placeholder="თქვენი სახელი" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="userEmail" data-i18n-placeholder="mailPlaceholder"
+                            placeholder="ელ-ფოსტის მისამართი" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="userMessage" data-i18n-placeholder="msgPlaceholder"
+                            placeholder="მოგვწერეთ თქვენი შეკითხვა..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn" data-i18n="sendBtn">შეტყობინების
+                        გაგზავნა</button>
+                </form>
+            </div>
         </section>
 
     </div>
@@ -192,12 +223,12 @@
     </div>
 
     <div id="imageModal">
-    <div class="image-modal-content">
-        <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
-        <img id="modalImage" src="" alt="Zoomed Medicine">
-        <h3 id="modalImageTitle"></h3>
+        <div class="image-modal-content">
+            <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
+            <img id="modalImage" src="" alt="Zoomed Medicine">
+            <h3 id="modalImageTitle"></h3>
+        </div>
     </div>
-</div>
 
     <script src="js/data.js"></script>
     <script src="js/translations.js"></script>
